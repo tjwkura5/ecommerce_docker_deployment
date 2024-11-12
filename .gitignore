@@ -57,9 +57,7 @@ cover/
 
 # Django stuff:
 *.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+
 
 # Flask stuff:
 instance/
@@ -153,6 +151,15 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+#Terraform
+Terraform/variables.auto.tfvars
+Terraform/.terraform
+Terraform/.terraform/*
+Terraform/.terraform.lock.hcl
+Terraform/terraform.tfstate
+Terraform/terraform.tfstate.backup
+Terraform/plan.tfplan
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
