@@ -46,7 +46,12 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plug
 docker --version
 echo "Docker installed successfully."
 
-sleep 60 
+sleep 60
+
+### Post Install Docker Group
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
 
 # Log into DockerHub
 echo "Logging into DockerHub..."
@@ -67,6 +72,7 @@ docker compose up -d --force-recreate
 echo "Docker Compose services deployed."
 
 # Cleanup
-docker system prune -f
 docker logout
+docker system prune -f
+
 echo "Cleanup complete."
