@@ -6,10 +6,9 @@ WORKDIR /app
 COPY ./frontend/package.json ./frontend/package-lock.json ./
 RUN npm ci
 
-# Copy the rest of the application and build it
+# Copy the rest of the application
 COPY ./frontend ./
 
-# Expose Nginx default port
 EXPOSE 3000
 
 ENTRYPOINT ["npm", "start"]

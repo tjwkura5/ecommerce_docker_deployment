@@ -77,16 +77,13 @@ pipeline {
       }
     }
   }
-
   post {
     always {
-      agent { label 'build-node' }
-      steps {
-        sh '''
-          docker logout
-          docker system prune -f
-        '''
-      }
+      // Logout and clean up Docker resources
+      sh '''
+        docker logout
+        docker system prune -f
+      '''
     }
   }
 }
