@@ -9,8 +9,15 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
+import sqlite3
+
 from sklearn.ensemble import IsolationForest
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+
+
+conn = sqlite3.connect('db.sqlite3')
+data = pd.read_sql_query("SELECT * FROM account_stripemodel", conn)
+conn.close()
 
 # Preprocessing
 # Drop unnecessary columns and only keep numerical or encoded categorical features
