@@ -6,7 +6,7 @@ pipeline {
   }
 
   stages {
-    stage ('Build') {
+    stage('Build') {
       agent any
       steps {
         sh '''#!/bin/bash
@@ -18,7 +18,7 @@ pipeline {
       }
     }
 
-    stage ('Test') {
+    stage('Test') {
       agent any
       steps {
         sh '''#!/bin/bash
@@ -27,15 +27,15 @@ pipeline {
         python backend/manage.py makemigrations
         python backend/manage.py migrate
         pytest backend/account/tests.py --verbose --junit-xml test-reports/results.xml
-        ''' 
+        '''
       }
     }
-
+    
     stage('Cleanup') {
       agent { label 'build-node' }
       steps {
         sh '''
-          # Only clean Docker system
+          echo "Performing in-pipeline cleanup after Test..."
           docker system prune -f
           
           # Safer git clean that preserves terraform state
@@ -76,15 +76,17 @@ pipeline {
         }
       }
     }
-  }
-  post {
-    always {
-      // Logout and clean up Docker resources
+
+    // Finalize Stage (Replaces post block)
+    stage('Finalize') {
       agent { label 'build-node' }
-      sh '''
-        docker logout
-        docker system prune -f
-      '''
+      steps {
+        sh '''
+          echo "Performing final cleanup tasks..."
+          docker logout
+          docker system prune -f
+        '''
+      }
     }
   }
 }
