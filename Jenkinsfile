@@ -80,6 +80,7 @@ pipeline {
   post {
     always {
       // Logout and clean up Docker resources
+      agent { label 'build-node' }
       sh '''
         docker logout
         docker system prune -f
