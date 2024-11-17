@@ -82,6 +82,7 @@ resource "aws_instance" "ecommerce_app_az1"{
     docker_pass = var.dockerhub_password,
     docker_compose = templatefile("./compose.yml", {
       rds_endpoint = var.rds_endpoint
+      run_migrations = "true"
     })
   }))
   # Tagging the resource with a Name label. Tags help in identifying and organizing resources in AWS.
@@ -103,6 +104,7 @@ resource "aws_instance" "ecommerce_app_az2"{
     docker_pass = var.dockerhub_password,
     docker_compose = templatefile("./compose.yml", {
       rds_endpoint = var.rds_endpoint
+      run_migrations = "false"
     })
   }))
 
