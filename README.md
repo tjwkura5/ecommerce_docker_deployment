@@ -1,4 +1,4 @@
-# Deploying Ecommerce Website using Docker & Terraform
+# Deploying Ecommerce Application using Docker
 
 ## Purpose
 
