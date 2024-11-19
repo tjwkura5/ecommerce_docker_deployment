@@ -56,7 +56,7 @@ This workload demonstrates how to combine containerization, automation, and IaC 
 
       v. "Launch method" == "Launch agents via SSH"
 
-      vi. "Host" is the public IP address of the Node Server
+      vi. "Host" is the private IP address of the Node Server
 
       vii. Click on "+ ADD" under "Credentials" and select "Jenkins".
 
@@ -144,7 +144,7 @@ This workload demonstrates how to combine containerization, automation, and IaC 
     }
     ```
 
-    NOTE: Notice what is required for the user data block. (var.dockerhub_username, var.dockerhub_password, deploy.sh, compose.yaml, and var.rds_endpoint) Make sure that you declare the required variables and create the deploy.sh and compose.yml and place them in the same directory as your main.tf.
+    NOTE: Notice what is required for the user data block. (var.dockerhub_username, var.dockerhub_password, deploy.sh, compose.yml, and var.rds_endpoint) Make sure that you declare the required variables and create the deploy.sh and compose.yml and place them in the same directory as your main.tf.
 
 6. Create a deploy.sh file that will run in "user_data".
   
@@ -154,7 +154,7 @@ This workload demonstrates how to combine containerization, automation, and IaC 
 
     * log into DockerHub;
 
-    * create the docker-compose.yaml with the following code:
+    * create the docker-compose.yml with the following code:
 
         
         ```
