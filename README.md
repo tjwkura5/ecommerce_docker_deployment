@@ -282,7 +282,7 @@ This workload demonstrates how to combine containerization, automation, and IaC 
 
     * Set the command `npm start` to run when the container is started
 
-8. Add your Docker hub credentials as secret to your jenkins server. Be sure to select "(global)" under the "Stores scoped to Jenkins" section and Choose the "Kind" as Username with password.
+8. Add your Docker hub credentials as a secret to your jenkins server. Be sure to select "(global)" under the "Stores scoped to Jenkins" section and Choose the "Kind" as Username with password.
 
 9. Create a jenkins file that will do the following:
     
