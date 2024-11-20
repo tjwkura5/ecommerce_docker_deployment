@@ -24,8 +24,6 @@ pipeline {
         sh '''#!/bin/bash
         source venv/bin/activate
         pip install pytest-django
-        python manage.py makemigrations
-        python manage.py migrate
         pytest backend/account/tests.py --verbose --junit-xml test-reports/results.xml
         '''
       }
