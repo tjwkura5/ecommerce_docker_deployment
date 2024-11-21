@@ -523,6 +523,19 @@ Currently, the frontend and backend containers run on the same EC2 instance, lim
 1. **Node Autoscaling**: AWS Autoscaling Groups dynamically add or remove EC2 nodes based on Kubernetes Cluster Autoscaler requirements.
 2. **Pod Autoscaling**: Kubernetes Horizontal Pod Autoscaler (HPA) scales frontend and backend pods independently based on resource metrics.
 
+
+## AI Model: Fraud Detection in E-Commerce
+
+The fraud detection component leverages machine learning to identify potential anomalies in e-commerce transactions. By analyzing transaction data, the system evaluates three models for anomaly detection:
+
+1. **Isolation Forests**: A tree-based model for isolating anomalies efficiently.
+2. **DBSCAN**: A clustering approach that identifies dense regions and flags points in sparse regions as anomalies.
+3. **Autoencoders**: Neural networks that reconstruct input data, where anomalies result in higher reconstruction errors.
+
+After testing all models, **DBSCAN** was selected for its ability to highlight clear patterns of unusual behavior, such as duplicate card usage across multiple user IDs. 
+
+[Read the full details here](AI_Concentration/README.md).
+
 ## Conclusion
 
 This workload successfully demonstrates the deployment of a secure, scalable, and fault-tolerant e-commerce application using modern DevOps practices. By combining Docker for containerization, Terraform for infrastructure as code, and Jenkins for CI/CD automation, we achieved a streamlined and repeatable deployment process. 
